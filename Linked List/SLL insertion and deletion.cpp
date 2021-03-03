@@ -95,6 +95,15 @@ int length_of_List(struct node* var){
     return count;
 }
 
+void deleteList(struct node* head){
+    struct node* it;
+    while(head!=NULL){
+        it = head;
+        head = head->next;
+        free(it);
+    }
+}
+
 int main(){
     struct node* head = NULL;
     head = Insert_Node(head,10,1);
@@ -106,5 +115,9 @@ int main(){
     head = Delete_Node(head,3);
     print_List(head);
     head = Delete_Node(head,5);//for corner case checking
+    
+    //lets delete whole list
+    deleteList(head);
+    
     return 0;
 }
